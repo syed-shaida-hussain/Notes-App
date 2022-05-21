@@ -40,11 +40,11 @@ const Signup = () => {
         <h1 class="page-heading centered">Signup</h1>
 
 
-     <div class="input-labels">First name</div>
+        <div class="input-labels">First name</div>
         <input class="input-field"  value={user.firstName}
             onChange={e => setUser({ ...user, firstName : e.target.value })} required />
 
-<div class="input-labels">Last name</div>
+        <div class="input-labels">Last name</div>
         <input class="input-field"  value={user.lastName}
             onChange={e => setUser({ ...user, lastName : e.target.value })} required />
             
