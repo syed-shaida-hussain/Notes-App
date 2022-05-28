@@ -1,0 +1,211 @@
+:root {
+  --primary-color: #f59e0b;
+  --shadow-color: #cbd5e1;
+  --bg-color: #f8fafc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.input-note-card {
+  width: 35rem;
+  margin: auto;
+  box-shadow: 1px 1px 5px 2px var(--shadow-color);
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.main-wrapper {
+  display: flex;
+}
+
+.sidebar-container {
+  width: 10rem;
+  display: flex;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar-nav {
+  list-style: none;
+  text-align: center;
+}
+
+.sidebar-link {
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-link-active {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.hover:hover {
+  background-color: var(--shadow-color);
+}
+
+.center {
+  margin: auto;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  height: 3rem;
+}
+
+.brand {
+  font-weight: 500;
+}
+
+.primary-color {
+  color: #fbbf24;
+}
+
+.add-note-btn {
+  position: relative;
+  left: 25rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.mr2 {
+  margin-right: 2rem;
+}
+
+.ml1 {
+  margin-left: 1rem;
+}
+
+.mt1 {
+  margin-top: 1rem;
+}
+
+.mb1 {
+  margin-bottom: 1rem;
+}
+
+.blue {
+  background-color: #67e8f9;
+}
+
+.dark-green {
+  background-color: #14b8a6;
+}
+
+.light-green {
+  background-color: #86efac;
+}
+
+.pink {
+  background-color: #fbcfe8;
+}
+
+.purple {
+  background-color: #c7d2fe;
+}
+
+.yellow {
+  background-color: #fde68a;
+}
+
+.red {
+  background-color: #fb7185;
+}
+
+.gray {
+  background-color: #94a3b8;
+}
+
+.btn {
+  border: none;
+  padding: 0.7rem;
+  margin: 0.5rem;
+}
+
+.center-text{
+  text-align: center;
+}
+
+.color-btn-container {
+  max-width: 10rem;
+}
+
+.font-medium {
+  font-size: 1.1rem;
+}
+
+.input {
+  border: none;
+  outline: none;
+  resize: vertical;
+}
+
+.textarea {
+  border: none;
+  outline: none;
+  width: 25rem;
+  min-height: 8rem;
+  resize: vertical;
+  overflow: hidden;
+  writing-mode: horizontal-tb;
+}
+
+.note-card {
+  padding: 0.5rem;
+  border: 1px solid var(--shadow-color);
+  box-shadow: 2px 1px 5px 2px var(--shadow-color);
+  width: 20rem;
+  height: 10rem;
+  overflow-y: scroll;
+  resize: vertical;
+}
+
+.service-icons {
+  position: relative;
+  left: 13rem;
+  top: 6rem;
+}
+
+.aligned {
+  position: fixed;
+  bottom: 16rem;
+  left: 27.5rem;
+}
+
+.white {
+  color: var(--shadow-color);
+}
+
+.pin-button {
+  border: none;
+  margin-right: 1rem;
+}
+
+.material-icons, .material-symbols-outlined , button {
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
