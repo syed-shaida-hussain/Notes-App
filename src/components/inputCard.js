@@ -22,8 +22,8 @@ const InputCard = () => {
         }
       };
       
-      const addNote = async () => {
-        await addNoteService();
+      const addNote = () => {
+        addNoteService();
         setNotesData(initialNotesData)
         setIsColorModalActive(false)
       };

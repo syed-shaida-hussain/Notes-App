@@ -8,11 +8,17 @@ const HomePage = () => {
    
     const { auth : {token} } = useAuth()
     const {noteState , notesData , setNotesData , dispatchNote , isColorModalActive , setIsColorModalActive , isEditModalActive , setIsEditModalActive} = useNote()
+    const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" }
 
     useEffect(() => {
+      try {
         axios.get("/api/notes" , {headers  : {authorization : token}}).then((res) => {
-            dispatchNote({type : "GET_NOTES" , payload : res.data.notes})
-        })
+          dispatchNote({type : "GET_NOTES" , payload : res.data.notes})
+      })
+      } catch(e) {
+        console.log(e)
+      }
+     
     },[noteState])
 
 
@@ -79,9 +85,9 @@ const HomePage = () => {
                 <h3>{note.title}</h3>
                 <div className = "note-text">{note.noteText}</div>
                 <div className = "service-icons">
-                <span class="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
-                <span class="material-icons ml1 ">archive</span>
-                <span class="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
+                <span className ="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
+                <span className ="material-icons ml1 ">archive</span>
+                <span className ="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
                 </div>
             </div>) }</div></div>}
 
@@ -91,9 +97,9 @@ const HomePage = () => {
                 <h3>{note.title}</h3>
                 <div className = "note-text">{note.noteText}</div>
                 <div className = "service-icons">
-                <span class="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
-                <span class="material-icons ml1 ">archive</span>
-                <span class="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
+                <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
+                <span className="material-icons ml1 ">archive</span>
+                <span className="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
                 </div>
         </div>) } </div>  </div>}
 
@@ -108,7 +114,7 @@ const HomePage = () => {
           />
               {  isColorModalActive && <ColorModal />}
           <div>
-          <span class="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
+          <span className="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
             <button className="add-note-btn font-medium mt1 mb1" onClick = {() => editNote()}>Edit Note</button>
           </div>
         </section>}
