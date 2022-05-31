@@ -131,10 +131,11 @@ const HomePage = () => {
             className="ml1 mt1 font-medium textarea"
             placeholder="Add a note..."  onChange = {(e) => setNotesData({...notesData , noteText : (noteState.currNote.noteText , e.target.value)})} defaultValue = {noteState.currNote.noteText}
           />
-              {  isColorModalActive && <ColorModal />}
+            
           <div>
           <span className="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
             <button className="add-note-btn font-medium mt1 mb1" onClick = {() => editNote()}>Edit Note</button>
+            {isColorModalActive && <ColorModal className = "large-input-card" />}
           </div>
         </section>}
         </section>
