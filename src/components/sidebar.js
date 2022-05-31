@@ -5,10 +5,13 @@ const Sidebar = () => {
         <aside className = "sidebar-container">
         <ul className = "sidebar-nav">
           <NavLink to = "/" className={({ isActive }) => 
-                     (isActive ? "sidebar-link-active  " : " link ")}> <li className = "sidebar-link hover" ><span className="material-icons">home</span> Home </li>
+                     (isActive ? "sidebar-link-active  " : " link ")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">home</span> Home </li>
           </NavLink>
           <NavLink to = "/login" className={({ isActive }) => 
                      (isActive ? "sidebar-link-active " : " link")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">account_circle</span> Account </li>
+          </NavLink>
+          <NavLink to = "/archives" className={({ isActive }) => 
+                     (isActive ? "sidebar-link-active " : " link")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">archive</span> Archives </li>
           </NavLink>
         </ul>
         </aside>
