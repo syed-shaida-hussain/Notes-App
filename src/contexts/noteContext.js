@@ -10,13 +10,15 @@ const noteReducer = (state , action) => {
             return {...state , currNote : (state.currNote , action.payload)}
         case "DELETE_NOTE" :
             return {...state , notes : (state.notes.filter(item => item._id !== action.payload._id))}
+        case "GET_TRASH_NOTES" :
+            return {...state , trashedNotes : (state.trashedNotes , action.payload) }
     }
 }
 
 const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" }
 
 const NoteProvider = ({children}) => {
-    const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} })
+    const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} , trashedNotes : [] })
     const [ notesData , setNotesData ] = useState(initialNotesData)
     const [ isEditModalActive , setIsEditModalActive ] = useState(false)
     const [ isColorModalActive , setIsColorModalActive] = useState(false)
