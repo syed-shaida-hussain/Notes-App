@@ -78,6 +78,19 @@ const HomePage = () => {
         await trashNoteService(note);
       };
 
+      const archiveNoteService = async (note) => {
+        try {
+          await axios.post(`/api/notes/archives/${note._id}` , { note : note}  , { headers : { authorization : token }})
+        } catch(e){
+          console.log(e)
+        }
+      }
+
+      const archiveNote = (note) => {
+        archiveNoteService(note);
+        dispatchNote({type : "ARCHIVE_NOTE" , payload : note})
+      }
+      
       const getCurrNote = (note) => {
         const currNote = noteState.notes.find(item => item._id === note._id)
         dispatchNote({type : "GET_CURR_NOTE" , payload : currNote})
@@ -103,7 +116,7 @@ const HomePage = () => {
                 <div className = "note-text">{note.noteText}</div>
                 <div className = "service-icons">
                 <span className ="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
-                <span className ="material-icons ml1 ">archive</span>
+                <span className ="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
                 <span className ="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
                 <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
                 </div>
@@ -116,7 +129,7 @@ const HomePage = () => {
                 <div className = "note-text">{note.noteText}</div>
                 <div className = "service-icons">
                 <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
-                <span className="material-icons ml1 ">archive</span>
+                <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
                 <span className="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
                 <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
                 </div>
