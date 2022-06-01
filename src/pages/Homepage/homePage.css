@@ -187,13 +187,15 @@
 
 .service-icons {
   position: relative;
-  left: 13rem;
+  left: 10rem;
   top: 6rem;
 }
 
 .aligned {
   position: fixed;
-  bottom: 16rem;
+  width: 40rem;
+  height: 23rem;
+  bottom: 10rem;
   left: 27.5rem;
 }
 

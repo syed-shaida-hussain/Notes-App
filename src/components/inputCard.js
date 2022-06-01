@@ -38,11 +38,12 @@ const InputCard = () => {
           className="ml1 mt1 font-medium textarea"
           placeholder="Add a note..." value = {notesData.noteText} onChange = {(e) => setNotesData({...notesData , noteText : e.target.value})} required
         />
-      { isColorModalActive && <ColorModal />}
+     
        
         <div>
         <span className ="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
           <button className="add-note-btn font-medium mt1 mb1" onClick = {() => addNote()}>Add Note</button>
+          { isColorModalActive && <ColorModal />}
         </div>
       </section>
     )

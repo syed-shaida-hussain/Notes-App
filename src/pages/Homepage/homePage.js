@@ -61,6 +61,23 @@ const HomePage = () => {
         dispatchNote({type : "DELETE_NOTE" , payload : note})
       };
 
+      const trashNoteService = async (note) => {
+        try {
+          await axios.post(
+            `/api/notes/trash/${note._id}` , {} ,
+            {
+              headers: { authorization: token }
+            }
+          );
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      
+      const addNoteToTrash = async (note) => {
+        await trashNoteService(note);
+      };
+
       const archiveNoteService = async (note) => {
         try {
           await axios.post(`/api/notes/archives/${note._id}` , { note : note}  , { headers : { authorization : token }})
@@ -73,7 +90,7 @@ const HomePage = () => {
         archiveNoteService(note);
         dispatchNote({type : "ARCHIVE_NOTE" , payload : note})
       }
-
+      
       const getCurrNote = (note) => {
         const currNote = noteState.notes.find(item => item._id === note._id)
         dispatchNote({type : "GET_CURR_NOTE" , payload : currNote})
@@ -101,6 +118,7 @@ const HomePage = () => {
                 <span className ="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
                 <span className ="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
                 <span className ="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
+                <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
                 </div>
             </div>) }</div></div>}
 
@@ -113,6 +131,7 @@ const HomePage = () => {
                 <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
                 <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
                 <span className="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
+                <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
                 </div>
         </div>) } </div>  </div>}
 
@@ -125,10 +144,11 @@ const HomePage = () => {
             className="ml1 mt1 font-medium textarea"
             placeholder="Add a note..."  onChange = {(e) => setNotesData({...notesData , noteText : (noteState.currNote.noteText , e.target.value)})} defaultValue = {noteState.currNote.noteText}
           />
-              {  isColorModalActive && <ColorModal />}
+            
           <div>
           <span className="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
             <button className="add-note-btn font-medium mt1 mb1" onClick = {() => editNote()}>Edit Note</button>
+            {isColorModalActive && <ColorModal className = "large-input-card" />}
           </div>
         </section>}
         </section>

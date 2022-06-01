@@ -10,8 +10,13 @@ const Sidebar = () => {
           <NavLink to = "/login" className={({ isActive }) => 
                      (isActive ? "sidebar-link-active " : " link")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">account_circle</span> Account </li>
           </NavLink>
+
+          <NavLink to = "/trash" className={({ isActive }) => 
+                     (isActive ? "sidebar-link-active " : " link")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">auto_delete</span> Trashed</li>
+
           <NavLink to = "/archives" className={({ isActive }) => 
                      (isActive ? "sidebar-link-active " : " link")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">archive</span> Archives </li>
+
           </NavLink>
         </ul>
         </aside>
