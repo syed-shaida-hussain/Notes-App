@@ -25,8 +25,7 @@ const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" 
 
 const NoteProvider = ({children}) => {
 
-    const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} , trashedNotes : [] })
-    const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} , archives : [] })
+    const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} , archives : [] , trashedNotes : [] })
 
     const [ notesData , setNotesData ] = useState(initialNotesData)
     const [ isEditModalActive , setIsEditModalActive ] = useState(false)
