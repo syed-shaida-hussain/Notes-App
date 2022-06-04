@@ -31,23 +31,43 @@ const TrashPage = () => {
         restoreNoteService(note);
       }
 
+
+      const deleteTrashNoteService = async (note) => {
+        try {
+          await axios.delete(
+            `/api/trash/delete/${note._id}`,
+            {
+              headers: { authorization: token }
+            }
+          );
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      
+      const deleteTrashNote = (note) => {
+        deleteTrashNoteService(note);
+        dispatchNote({type : "DELETE_NOTE" , payload : note})
+      };
+
     return (
         <div>
         <Header />
         <hr />
         <div className = "main-wrapper">
           <Sidebar />
-          <section className = " mt1 mb1">
+        <section className = " mt1 mb1">
          {noteState.trashedNotes.length > 0 && <div>
             <h3 className = "primary-color ml1 center-text"> Trashed Notes </h3>
            <div className = "notes-container"> {noteState.trashedNotes.map(note => <div key = {note._id} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
                 <h3>{note.title}</h3>
                 <div className = "note-text">{note.noteText}</div>
                 <div className = "service-icons">
-                <span className ="material-icons ml5" onClick = {() => restoreNote(note)}>restore_from_trash</span>
+                <span className ="material-icons ml3" onClick = {() => restoreNote(note)}>restore_from_trash</span>
+                <span className ="material-icons ml1" onClick = {() => deleteTrashNote(note)}>delete_forever</span>
                 </div>
             </div>) }</div></div>}
-         </section>
+        </section>
         </div>
       
        </div>

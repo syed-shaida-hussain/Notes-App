@@ -10,13 +10,14 @@ const noteReducer = (state , action) => {
             return {...state , currNote : (state.currNote , action.payload)}
         case "DELETE_NOTE" :
             return {...state , notes : (state.notes.filter(item => item._id !== action.payload._id))}
-
         case "GET_TRASH_NOTES" :
             return {...state , trashedNotes : (state.trashedNotes , action.payload) }
         case "GET_ARCHIVED_NOTES" :
             return {...state , archives : (state.archives, action.payload) }
         case "ARCHIVE_NOTE" :
             return {...state , archives : (state.archives , action.payload)}
+        default :
+            return {...state}
 
     }
 }

@@ -1,6 +1,6 @@
 import "./App.css";
-import { Signin } from "./pages/Authentication/loginPage";
 import {  Routes , Route } from "react-router-dom"
+import { Signin } from "./pages/Authentication/loginPage";
 import { Signup } from "./pages/Authentication/signupPage";
 import { HomePage } from "./pages/Homepage/homePage";
 import { TrashPage } from "./pages/Trashed/trash";

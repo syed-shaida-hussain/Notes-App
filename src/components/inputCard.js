@@ -31,8 +31,8 @@ const InputCard = () => {
     return(
         <section className="input-note-card mt1 mb1" style = {{backgroundColor : notesData.color}}>
         <div className="flex"> 
-          <input required className="ml1 mt1 font-medium input" placeholder="Title" value = {notesData.title} required onChange = {(e) => setNotesData({...notesData , title : e.target.value})} />
-          <button className = "pin-button mt1">{notesData.pin? <span className="material-symbols-outlined" onClick = {() => setNotesData({...notesData , pin : false})}>unpin</span> :  <span className="material-icons" onClick = {() => setNotesData({...notesData , pin : true})}>push_pin</span> }</button>
+          <input required className="ml1 mt1 font-medium input" placeholder="Title" value = {notesData.title}  onChange = {(e) => setNotesData({...notesData , title : e.target.value})} />
+          <button className = "pin-button mt1">{notesData.pin? <span className="material-icons" onClick = {() => setNotesData({...notesData , pin : false})}>push_pin</span> :  <span className="material-symbols-outlined" onClick = {() => setNotesData({...notesData , pin : true})}>push_pin</span> }</button>
         </div>
         <textarea
           className="ml1 mt1 font-medium textarea"

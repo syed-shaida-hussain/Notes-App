@@ -43,24 +43,6 @@ const HomePage = () => {
         setIsColorModalActive(false)
       };
 
-      const deleteNoteService = async (note) => {
-        try {
-          await axios.delete(
-            `/api/notes/${note._id}`,
-            {
-              headers: { authorization: token }
-            }
-          );
-        } catch (e) {
-          console.log(e);
-        }
-      };
-      
-      const deleteNote = async (note) => {
-        await deleteNoteService(note);
-        dispatchNote({type : "DELETE_NOTE" , payload : note})
-      };
-
       const trashNoteService = async (note) => {
         try {
           await axios.post(
@@ -117,8 +99,7 @@ const HomePage = () => {
                 <div className = "service-icons">
                 <span className ="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
                 <span className ="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
-                <span className ="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
-                <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
+                <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>delete</span>
                 </div>
             </div>) }</div></div>}
 
@@ -127,11 +108,11 @@ const HomePage = () => {
            <div className = "notes-container"> {unpinnedNotes.map(note => !note.pin && <div key = {note._id} onClick = {() => getCurrNote(note)} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
                 <h3>{note.title}</h3>
                 <div className = "note-text">{note.noteText}</div>
+                <div>{}</div>
                 <div className = "service-icons">
                 <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
                 <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
-                <span className="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
-                <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
+                <span className="material-icons ml1" onClick = {() => addNoteToTrash(note)}>delete</span>
                 </div>
         </div>) } </div>  </div>}
 

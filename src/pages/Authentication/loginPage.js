@@ -22,6 +22,7 @@ const Signin = () => {
         status: true,
         token: encodedToken,
       }));
+      navigate("/")
     }
   };
 
@@ -52,7 +53,7 @@ const Signin = () => {
         <div className="password-info flex-page">
           <input className="checkbox" type="checkbox" />
           <p className="checkbox-label">Remember me</p>
-          <a className="forgot-password" href="#">Forgot password?</a>
+          <p className="forgot-password" >Forgot password?</p>
         </div>
   
         <button className="login-button" type = "submit">Signin</button>

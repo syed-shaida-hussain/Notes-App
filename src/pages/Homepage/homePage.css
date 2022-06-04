@@ -97,8 +97,8 @@
   margin-left: 1rem;
 }
 
-.ml5 {
-  margin-left: 5rem;
+.ml3 {
+  margin-left: 3rem;
 }
 
 .mt1 {
@@ -187,7 +187,7 @@
 
 .service-icons {
   position: relative;
-  left: 10rem;
+  left: 13rem;
   top: 6rem;
 }
 

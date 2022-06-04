@@ -27,7 +27,7 @@ const Signup = () => {
         firstName: firstName,
         lastName : lastName
       }));
-    //   navigate("/")
+      navigate("/")
     }
   };
 

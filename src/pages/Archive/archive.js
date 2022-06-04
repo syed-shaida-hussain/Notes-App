@@ -31,6 +31,25 @@ const ArchivePage = () => {
         restoreNoteService(note);
       }
 
+      const deleteArchivedNoteService = async (note) => {
+        try {
+          await axios.delete(
+            `/api/archives/delete/${note._id}`,
+            {
+              headers: { authorization: token }
+            }
+          );
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      
+      const deleteArchivedNote = (note) => {
+        deleteArchivedNoteService(note);
+        dispatchNote({type : "DELETE_NOTE" , payload : note})
+      };
+
+
     return (
         <div>
         <Header />
@@ -44,7 +63,8 @@ const ArchivePage = () => {
                 <h3>{note.title}</h3>
                 <div className = "note-text">{note.noteText}</div>
                 <div className = "service-icons">
-                <span className ="material-icons ml5" onClick = {() => restoreNote(note)}>unarchive</span>
+                <span className ="material-icons ml3" onClick = {() => restoreNote(note)}>unarchive</span>
+                <span className ="material-icons ml1" onClick = {() => deleteArchivedNote(note)}>delete_forever</span>
                 </div>
             </div>) }</div></div>}
          </section>
