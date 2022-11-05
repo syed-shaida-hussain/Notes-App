@@ -12,6 +12,7 @@
 
 .input-note-card {
   width: 35rem;
+  height: fit-content;
   margin: auto;
   box-shadow: 1px 1px 5px 2px var(--shadow-color);
 }
@@ -29,7 +30,8 @@
 }
 
 .sidebar-container {
-  width: 10rem;
+  display: flex;
+  flex-direction: column;
   display: flex;
 }
 
@@ -41,6 +43,7 @@
 .sidebar-nav {
   list-style: none;
   text-align: center;
+  width: 5rem;
 }
 
 .sidebar-link {
@@ -97,12 +100,16 @@
   margin-left: 1rem;
 }
 
-.ml3 {
-  margin-left: 3rem;
+.ml5 {
+  margin-left: 5rem;
 }
 
 .mt1 {
   margin-top: 1rem;
+}
+
+.mt5{
+  margin-top: 5rem;
 }
 
 .mb1 {
@@ -153,6 +160,7 @@
 
 .color-btn-container {
   max-width: 10rem;
+  position: absolute;
 }
 
 .font-medium {
@@ -180,23 +188,24 @@
   border: 1px solid var(--shadow-color);
   box-shadow: 2px 1px 5px 2px var(--shadow-color);
   width: 20rem;
-  height: 10rem;
+  height: fit-content;
   overflow-y: scroll;
   resize: vertical;
 }
 
 .service-icons {
   position: relative;
-  left: 13rem;
-  top: 6rem;
+}
+
+.primary-bg{
+  background-color: var(--primary-color);
 }
 
 .aligned {
   position: fixed;
-  width: 40rem;
-  height: 23rem;
-  bottom: 10rem;
-  left: 27.5rem;
+  width: 100vw;
+  height: 100vh;
+  bottom: 0rem;
 }
 
 .white {
@@ -206,6 +215,15 @@
 .pin-button {
   border: none;
   margin-right: 1rem;
+}
+
+.filter-box{
+  border: none;
+  padding: 0rem 0.4rem;
+}
+
+.filter-list {
+  list-style: none;
 }
 
 .material-icons, .material-symbols-outlined , button {

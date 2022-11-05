@@ -22,20 +22,11 @@ const Signin = () => {
         status: true,
         token: encodedToken,
       }));
-      navigate("/")
     }
   };
 
-  const logout = () =>{
-    window.location.reload(true)
-    localStorage.removeItem("AUTH_TOKEN")
-  }
   return (
     <section >
-      <div className = "logout-btn-container">
-         <button className = "logout-btn" onClick = {() => logout()}> Logout</button>
-      </div>
-
       <form className="page-wrapper flex-page" onSubmit={e => {
           e.preventDefault();
           signinSubmitHandler(user);
@@ -53,7 +44,7 @@ const Signin = () => {
         <div className="password-info flex-page">
           <input className="checkbox" type="checkbox" />
           <p className="checkbox-label">Remember me</p>
-          <p className="forgot-password" >Forgot password?</p>
+          <a className="forgot-password" href="#">Forgot password?</a>
         </div>
   
         <button className="login-button" type = "submit">Signin</button>
@@ -69,7 +60,7 @@ const Signin = () => {
             Signin as Guest
           </button>
   
-       <Link to = "/signup" className="create-account-link">Create new account ></Link>
+       <Link to = "/signup" className="create-account-link">Create new account  </Link>
     </form>
     </section>
   );

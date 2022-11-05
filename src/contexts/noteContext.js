@@ -16,18 +16,15 @@ const noteReducer = (state , action) => {
             return {...state , archives : (state.archives, action.payload) }
         case "ARCHIVE_NOTE" :
             return {...state , archives : (state.archives , action.payload)}
-        default :
-            return {...state}
-
+        case "TRASH_NOTE" :
+            return {...state , trashedNotes : (state.trashedNotes , action.payload)}
     }
 }
 
-const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" }
+const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" , createdAt : ""}
 
 const NoteProvider = ({children}) => {
-
     const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} , archives : [] , trashedNotes : [] })
-
     const [ notesData , setNotesData ] = useState(initialNotesData)
     const [ isEditModalActive , setIsEditModalActive ] = useState(false)
     const [ isColorModalActive , setIsColorModalActive] = useState(false)
