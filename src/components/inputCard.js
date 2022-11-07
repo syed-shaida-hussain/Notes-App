@@ -2,12 +2,14 @@ import { useNote } from "../contexts/noteContext"
 import axios from "axios"
 import { useAuth } from "../contexts"
 import { ColorModal } from "./colorModal"
+import { useNavigate } from "react-router-dom"
 
 const InputCard = () => {
     const { notesData , isColorModalActive , setIsColorModalActive ,  setNotesData  } = useNote()
-    const { auth : {token} } = useAuth()
+    const { auth : {token , status} } = useAuth()
     const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" , order : ""}
     const {noteState} = useNote()
+    const navigate = useNavigate()
 
 
     const addNoteService = async (note) => {
@@ -47,7 +49,7 @@ const InputCard = () => {
         />
         <div>
         <span className ="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
-          <button className="add-note-btn font-medium mt1 mb1" type = "submit">Add Note</button>
+          {status?<button className="add-note-btn font-medium mt1 mb1" type = "submit">Add Note</button> : navigate('/login')}
           { isColorModalActive && <ColorModal />}
         </div>
       </form>

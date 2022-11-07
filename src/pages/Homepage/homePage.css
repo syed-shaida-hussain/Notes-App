@@ -233,3 +233,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.btn-color{
+  color: white;
+}
