@@ -21,7 +21,7 @@ const noteReducer = (state , action) => {
     }
 }
 
-const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" , createdAt : ""}
+const initialNotesData = {title : "" , noteText : "" , pin : false , color : "" , createdAt : "", order : ""}
 
 const NoteProvider = ({children}) => {
     const [noteState , dispatchNote] = useReducer( noteReducer , { notes : [] , currNote : {} , archives : [] , trashedNotes : [] })

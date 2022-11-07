@@ -3,7 +3,7 @@ import { useFilters } from "../contexts/filterContext"
 
 const Sidebar = () => {
   const {pathname} = useLocation()
-  const {sortBy , dispatchFilter} = useFilters()
+  const {sortBy , dispatchFilter} = useFilters();
 
     return (
         <aside className = "sidebar-container">
@@ -21,7 +21,7 @@ const Sidebar = () => {
                      (isActive ? "sidebar-link-active " : " link")}> <li className = "sidebar-link hover ml1" ><span className="material-icons">auto_delete</span> Trash </li>
           </NavLink>
         </ul>
-        { pathname === "/" &&  (<fieldset className="ml1 mt5 filter-box">
+        { pathname === "/home" &&  (<fieldset className="ml1 mt5 filter-box">
           <div className="flex">
             <legend className="">
               Sort By Time

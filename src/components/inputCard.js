@@ -36,7 +36,7 @@ const InputCard = () => {
           addNote()
         }} className="input-note-card mt1 mb1" style = {{backgroundColor : notesData.color}}>
         <div className="flex"> 
-          <input required className="ml1 mt1 font-medium input" placeholder="Title" value = {notesData.title}  onChange = {(e) => setNotesData({...notesData , title : e.target.value,order : noteState.notes.length})} />
+          <input required className="ml1 mt1 font-medium input" placeholder="Title" value = {notesData.title}  onChange = {(e) => setNotesData({...notesData , title : e.target.value, order : noteState.notes.length})} />
           {notesData.pin ? <span className="material-icons" onClick = {() => setNotesData({...notesData , pin : false })}>push_pin</span> :  <span className="material-symbols-outlined" onClick = {() => setNotesData({...notesData , pin : true})}>push_pin</span> }
         </div>
         <textarea

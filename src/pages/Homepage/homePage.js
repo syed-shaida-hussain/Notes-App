@@ -45,25 +45,6 @@ const HomePage = () => {
         setIsColorModalActive(false)
       };
 
-      const deleteNoteService = async (note) => {
-        try {
-          await axios.delete(
-            `/api/notes/${note._id}`,
-            {
-              headers: { authorization: token }
-            }
-          );
-        } catch (e) {
-          console.log(e);
-        }
-      };
-      
-      const deleteNote = async (note) => {
-        await deleteNoteService(note);
-        dispatchNote({type : "DELETE_NOTE" , payload : note})
-        setNotesData(initialNotesData)
-      };
-
       const trashNoteService = async (note) => {
         try {
           await axios.post(
@@ -85,13 +66,14 @@ const HomePage = () => {
 
       const archiveNoteService = async (note) => {
         try {
-          await axios.post(`/api/notes/archives/${note._id}` , { note : note}  , { headers : { authorization : token }})
+          await axios.post(`/api/notes/archives/${note._id}` , {note : note}  , { headers : { authorization : token }})
         } catch(e){
           console.log(e)
         }
       }
 
       const archiveNote = (note) => {
+        console.log(typeof note.order)
         archiveNoteService(note);
         dispatchNote({type : "ARCHIVE_NOTE" , payload : note})
         setNotesData(initialNotesData)
@@ -105,17 +87,17 @@ const HomePage = () => {
 
       function getSortedData(sortedList, sortBy ) {
         if (sortBy && sortBy === "NEWEST_FIRST") {
-            return sortedList.sort((a, b) => b [Number("order")] - a[Number("order")] );
+            return sortedList.sort((a, b) => b ["order"] - a["order"] );
         }
         if (sortBy && sortBy === "OLDEST_FIRST") {
-            return sortedList.sort((a, b) => a[Number("order")]  - b[Number("order")] );
+            return sortedList.sort((a, b) => a["order"]  - b["order"] );
         }
             return sortedList;
     }
 
       const pinnedNotes = noteState.notes.filter(note => note.pin)
       const unpinnedNotes = noteState.notes.filter(note => !note.pin)
-      const sortedData = getSortedData(unpinnedNotes , sortBy)
+      const sortedData = getSortedData(noteState.notes , sortBy)
 
     return (
       <div>
@@ -129,7 +111,7 @@ const HomePage = () => {
         <section className = " mt1 mb1">
          {pinnedNotes.length > 0 && <div>
             <h3 className = "primary-color ml1 center-text"> Pinned Notes </h3>
-           <div className = "notes-container"> {pinnedNotes.map(note => note.pin && <div key = {note._id} onClick = {() => getCurrNote(note)} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
+           <div className = "notes-container"> {sortedData.map(note => note.pin && <div key = {note._id} onClick = {() => getCurrNote(note)} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
                 <h2>{note.title}</h2>
                 <div className = "note-text">{note.noteText}</div>
 
@@ -138,21 +120,19 @@ const HomePage = () => {
                       <small>{new Date(note.createdAt).toLocaleDateString("in-IN")}</small>
                         <small> {new Date(note.createdAt).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
                       </small>
-                      <div>{note.order}</div>
                   </div>
                   <div className = "service-icons ">
                     <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
                     <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
-                    <span className="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
-                    <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
+                    <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>delete</span>
                   </div>
                  
                 </div>
             </div>) }</div></div>}
 
         {unpinnedNotes.length > 0 && <div className = "mt1 mb1">
-            <h3 className = "primary-color ml1 center-text"> Other Notes </h3>
-           <div className = "notes-container"> {unpinnedNotes.map(note => !note.pin && <div key = {note._id} onClick = {() => getCurrNote(note)} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
+            <h3 className = "primary-color ml1 center-text"> Notes </h3>
+           <div className = "notes-container"> {sortedData.map(note => !note.pin && <div key = {note._id} onClick = {() => getCurrNote(note)} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
                 <h2>{note.title}</h2>
                 <div className = "note-text">{note.noteText}</div>
           
@@ -161,13 +141,11 @@ const HomePage = () => {
                       <small>{new Date(note.createdAt).toLocaleDateString("in-IN")}</small>
                         <small> {new Date(note.createdAt).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
                       </small>
-                      <div>{note.order}</div>
                   </div>
                   <div className = "service-icons ">
                     <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
                     <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
-                    <span className="material-icons ml1" onClick = {() => deleteNote(note)}>delete</span>
-                    <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>auto_delete</span>
+                    <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>delete</span>
                   </div>
                  
                 </div>

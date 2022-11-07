@@ -22,6 +22,7 @@ const Signin = () => {
         status: true,
         token: encodedToken,
       }));
+      navigate('/home')
     }
   };
 

@@ -1,13 +1,15 @@
 import { useNote } from "../../contexts/noteContext"
 import {Header , Sidebar } from "../../components"
 import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import "../Homepage/homePage.css"
 import { useAuth } from "../../contexts"
 
 const TrashPage = () => {
     const {noteState , dispatchNote} = useNote()
-    const { auth : {token} } = useAuth()
+    const { auth : {token} } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
         try {
@@ -57,19 +59,29 @@ const TrashPage = () => {
         <div className = "main-wrapper">
           <Sidebar />
         <section className = " mt1 mb1">
-         {noteState.trashedNotes.length > 0 && <div>
-            <h3 className = "primary-color ml1 center-text"> Trashed Notes </h3>
+         {noteState.trashedNotes.length > 0 ? <div>
+            <h3 className = "primary-color ml1 center-text"> Trash Notes </h3>
            <div className = "notes-container"> {noteState.trashedNotes.map(note => <div key = {note._id} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
                 <h3>{note.title}</h3>
                 <div className = "note-text">{note.noteText}</div>
-                <div className = "service-icons">
-                <span className ="material-icons ml3" onClick = {() => restoreNote(note)}>restore_from_trash</span>
-                <span className ="material-icons ml1" onClick = {() => deleteTrashNote(note)}>delete_forever</span>
+                <div className = "flex">
+                <div className = "mt1">
+                      <small>{new Date(note.createdAt).toLocaleDateString("in-IN")}</small>
+                        <small> {new Date(note.createdAt).toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3")}
+                      </small>
+                  </div>
+                  <div className = "service-icons ">
+                  <span className ="material-icons ml3" onClick = {() => restoreNote(note)}>restore_from_trash</span>
+                  <span className ="material-icons ml1" onClick = {() => deleteTrashNote(note)}>delete_forever</span>
+                  </div>
+                 
                 </div>
-            </div>) }</div></div>}
+            </div>) }</div></div> 
+            : <div>
+                <h3 className=" primary-color center-text">No Trash notes here</h3>
+              </div>}
         </section>
         </div>
-      
        </div>
     )
 }
