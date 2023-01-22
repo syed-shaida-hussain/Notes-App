@@ -3,6 +3,7 @@ import { useAuth } from "../../contexts/authContext";
 import {  Link , useNavigate } from "react-router-dom"
 import { signinService } from "../../services/signinService";
 import "./auth.css";
+import { Header, Sidebar } from "../../components";
 
 const Signin = () => {
  
@@ -10,7 +11,7 @@ const Signin = () => {
     email: "",
     password: "",
   });
-  const { setAuth } = useAuth();
+  const { auth , setAuth } = useAuth();
   const navigate = useNavigate()
 
   const signinSubmitHandler = async (user) => {
@@ -26,8 +27,17 @@ const Signin = () => {
     }
   };
 
-  return (
+  const logout = () =>{
+    window.location.reload(true)
+    localStorage.removeItem("AUTH_TOKEN")
+  }
+
+  return ( !auth.status ?
     <section >
+      <Header/>
+      <hr/>
+      <div className="flex-r">
+      <Sidebar/>
       <form className="page-wrapper flex-page" onSubmit={e => {
           e.preventDefault();
           signinSubmitHandler(user);
@@ -63,7 +73,19 @@ const Signin = () => {
   
        <Link to = "/signup" className="create-account-link">Create new account  </Link>
     </form>
-    </section>
+
+      </div>
+     
+    </section> : <div>
+      <Header/>
+      <section className="flex">
+        <Sidebar/>
+        <div className="message">
+          <h2 >Add some notes! You are already logged in!</h2>
+        </div>
+      </section>
+
+    </div>
   );
 };
 export { Signin };

@@ -77,9 +77,10 @@ const TrashPage = () => {
                  
                 </div>
             </div>) }</div></div> 
-            : <div>
-                <h3 className=" primary-color center-text">No Trash notes here</h3>
-              </div>}
+            : <div className="center-text">
+            <h3 className=" primary-color ">No Trash notes here</h3>
+            <button className="home-btn btn" onClick={() => navigate("/home")}>Back Home</button>
+          </div>}
         </section>
         </div>
        </div>

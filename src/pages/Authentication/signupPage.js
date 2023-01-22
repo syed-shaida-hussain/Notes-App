@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useAuth } from "../../contexts/authContext";
-import {useNavigate} from "react-router-dom"
+import {useNavigate , Link} from "react-router-dom"
 import { signupService } from "../../services/signupService";
 import "./auth.css";
+import { Header } from "../../components";
 
 const Signup = () => {
  
@@ -33,6 +34,8 @@ const Signup = () => {
 
   return (
     <section >
+      <Header/>
+      <hr/>
       <form class="page-wrapper flex-page"   onSubmit={e => {
           e.preventDefault();
           signupSubmitHandler(user);
@@ -58,6 +61,8 @@ const Signup = () => {
               onChange={e => setUser({ ...user, password: e.target.value })} required />
   
         <button class="login-button" type = "submit">Signup</button>
+        <Link to = "/login" className="create-account-link">Already a user?  </Link>
+
     </form>
     </section>
   );

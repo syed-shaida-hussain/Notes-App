@@ -28,7 +28,8 @@ const NoteProvider = ({children}) => {
     const [ notesData , setNotesData ] = useState(initialNotesData)
     const [ isEditModalActive , setIsEditModalActive ] = useState(false)
     const [ isColorModalActive , setIsColorModalActive] = useState(false)
-    return <NoteContext.Provider value = {{noteState , dispatchNote , notesData , setNotesData , isColorModalActive , setIsColorModalActive , isEditModalActive , setIsEditModalActive}}>
+    const [isDarkMode , setIsDarkMode] = useState(false)
+    return <NoteContext.Provider value = {{noteState , dispatchNote , notesData , setNotesData , isColorModalActive , setIsColorModalActive , isEditModalActive , setIsEditModalActive , isDarkMode, setIsDarkMode}}>
         {children}
     </NoteContext.Provider>
 }

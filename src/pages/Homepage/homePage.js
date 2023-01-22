@@ -73,7 +73,6 @@ const HomePage = () => {
       }
 
       const archiveNote = (note) => {
-        console.log(typeof note.order)
         archiveNoteService(note);
         dispatchNote({type : "ARCHIVE_NOTE" , payload : note})
         setNotesData(initialNotesData)
@@ -105,7 +104,7 @@ const HomePage = () => {
         <hr />
         <div className = "main-wrapper">
         <Sidebar />
-        <InputCard />
+        { !isEditModalActive && <InputCard />}
         </div>
       
         <section className = " mt1 mb1">
@@ -130,12 +129,11 @@ const HomePage = () => {
                 </div>
             </div>) }</div></div>}
 
-        {unpinnedNotes.length > 0 && <div className = "mt1 mb1">
+        {unpinnedNotes.length > 0 && <div className = "mt1">
             <h3 className = "primary-color ml1 center-text"> Notes </h3>
            <div className = "notes-container"> {sortedData.map(note => !note.pin && <div key = {note._id} onClick = {() => getCurrNote(note)} className = "note-card ml1 mt1 mr2 mb1" style = {{backgroundColor : note.color}} >
                 <h2>{note.title}</h2>
                 <div className = "note-text">{note.noteText}</div>
-          
                 <div className = "flex">
                 <div className = "mt1">
                       <small>{new Date(note.createdAt).toLocaleDateString("in-IN")}</small>
@@ -151,7 +149,7 @@ const HomePage = () => {
                 </div>
         </div>) } </div>  </div>}
 
-        {isEditModalActive &&  <section className="input-note-card mt1 aligned yellow" style = {{backgroundColor : notesData.color}}>
+        {isEditModalActive &&  <section className="input-note-card mt1 aligned" >
           <div className="flex">
             <input className="ml1 mt1 font-medium input" placeholder="Title" onChange = {(e) => setNotesData({...notesData , title : (notesData.title, e.target.value)})} defaultValue = {notesData.title}/>
             {notesData.pin ? <span className="material-icons" onClick = {() => setNotesData({...notesData , pin : false})}>push_pin</span> :  <span className="material-symbols-outlined" onClick = {() => setNotesData({...notesData , pin : true})}>push_pin</span> }
@@ -164,9 +162,7 @@ const HomePage = () => {
           />
             
           <div>
-          <span className="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
-            <button className="add-note-btn font-medium mt1 mb1" onClick = {() => editNote()}>Edit Note</button>
-            {isColorModalActive && <ColorModal className = "large-input-card" />}
+            <button className="add-note-btn edit-note-btn font-medium mt1 mb1" onClick = {() => editNote()}>Edit Note</button>
           </div>
         </section>}
         </section>

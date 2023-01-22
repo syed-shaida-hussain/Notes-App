@@ -59,7 +59,7 @@
 }
 
 .hover:hover {
-  background-color: var(--shadow-color);
+  background-color: var(--bg-color);
 }
 
 .center {
@@ -90,6 +90,10 @@
   border: none;
   background-color: var(--primary-color);
   color: white;
+}
+
+.edit-note-btn{
+  left: 28rem;
 }
 
 .mr2 {
@@ -155,12 +159,16 @@
 }
 
 .center-text{
+  font-size: 1.2rem;
+  width: 100vw;
   text-align: center;
 }
 
 .color-btn-container {
   max-width: 10rem;
   position: absolute;
+  bottom: 16rem;
+  left: 32rem;
 }
 
 .font-medium {
@@ -203,9 +211,8 @@
 
 .aligned {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  bottom: 0rem;
+  bottom: 30vh;
+  left: 30%;
 }
 
 .white {
@@ -236,4 +243,26 @@
 
 .btn-color{
   color: white;
+  font-weight: bolder;
+}
+
+.message{
+  margin:1rem auto;
+}
+
+.home-btn{
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bolder;
+}
+
+.dark-mode {
+  background-color: rgb(36, 34, 34);
+  color: var(--shadow-color);
+}
+
+.flex-r{
+  display: flex;
+  justify-content: space-around;
 }

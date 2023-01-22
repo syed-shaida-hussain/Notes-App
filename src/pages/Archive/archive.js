@@ -4,10 +4,12 @@ import { useEffect } from "react"
 import axios from "axios"
 import "../Homepage/homePage.css"
 import { useAuth } from "../../contexts"
+import { useNavigate } from "react-router-dom"
 
 const ArchivePage = () => {
     const {noteState , dispatchNote} = useNote()
     const { auth : {token} } = useAuth()
+    const navigate = useNavigate()
 
     useEffect(() => {
         try {
@@ -75,8 +77,9 @@ const ArchivePage = () => {
                  
                 </div>
             </div>) }</div></div>
-            : <div>
-            <h3 className=" primary-color center-text">No Archived notes here</h3>
+            : <div className="center-text">
+            <h3 className=" primary-color ">No Archived notes here</h3>
+            <button className="home-btn btn" onClick={() => navigate("/home")}>Add some Notes</button>
           </div>}
          </section>
         </div>
