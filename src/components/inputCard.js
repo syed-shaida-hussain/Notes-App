@@ -48,8 +48,8 @@ const InputCard = () => {
             })} required
         />
         <div>
-        <span className ="material-icons ml1" onClick = {() => setIsColorModalActive(!isColorModalActive)}>palette</span>
-          {status?<button className="add-note-btn font-medium mt1 mb1" type = "submit">Add Note</button> : navigate('/login')}
+        <span className ="material-icons ml1" onClick = {() => {setIsColorModalActive(!isColorModalActive)}}>palette</span>
+          <button className="add-note-btn font-medium mt1 mb1" type = "submit">Add Note</button> 
           { isColorModalActive && <ColorModal />}
         </div>
       </form>

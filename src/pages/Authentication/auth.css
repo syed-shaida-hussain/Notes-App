@@ -21,11 +21,11 @@
   }
   
   .page-wrapper {
-    margin: 3rem auto;
+    margin: 1rem 2rem 1rem 1rem;
     background-color: var(--page-bg-color);
     flex-direction: column;
     width: 24rem;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 0.5rem;
   }
   
