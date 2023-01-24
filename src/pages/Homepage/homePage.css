@@ -291,7 +291,7 @@
 }
 
 .color-btn-container {
-  top: 11rem;
+  top: 9rem;
   left: 6rem;
 }
 
@@ -301,6 +301,7 @@
   
 .textarea {
   width: 15rem;
+  min-height: 6rem;
 }
 
 .note-card {
@@ -313,6 +314,11 @@
 .center-text{
   font-size: 1rem;
   width: 70vw;
+}
+
+.input{
+  background-color: red;
+  max-width: 12rem;
 }
 
 }
