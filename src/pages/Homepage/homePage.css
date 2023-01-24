@@ -301,7 +301,7 @@
   
 .textarea {
   width: 15rem;
-  min-height: 6rem;
+  /* min-height: 7rem; */
 }
 
 .note-card {
@@ -317,7 +317,6 @@
 }
 
 .input{
-  background-color: red;
   max-width: 12rem;
 }
 
