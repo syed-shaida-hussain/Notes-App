@@ -121,7 +121,7 @@ const HomePage = () => {
                       </small>
                   </div>
                   <div className = "service-icons ">
-                    <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
+                    <span className="material-icons" onClick = {() => setIsEditModalActive(!isEditModalActive)}>edit</span>
                     <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
                     <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>delete</span>
                   </div>
@@ -141,7 +141,7 @@ const HomePage = () => {
                       </small>
                   </div>
                   <div className = "service-icons ">
-                    <span className="material-icons" onClick = {() => setIsEditModalActive(true)}>edit</span>
+                    <span className="material-icons" onClick = {() => setIsEditModalActive(!isEditModalActive)}>edit</span>
                     <span className="material-icons ml1" onClick = {() => archiveNote(note)}>archive</span>
                     <span className ="material-icons ml1" onClick = {() => addNoteToTrash(note)}>delete</span>
                   </div>

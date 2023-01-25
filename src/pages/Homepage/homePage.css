@@ -94,6 +94,7 @@
 }
 
 .edit-note-btn{
+  position: relative;
   left: 28rem;
 }
 
@@ -216,7 +217,7 @@
 
 .aligned {
   position: fixed;
-  bottom: 30vh;
+  bottom: 45vh;
   left: 30%;
 }
 
@@ -301,7 +302,6 @@
   
 .textarea {
   width: 15rem;
-  /* min-height: 7rem; */
 }
 
 .note-card {
@@ -318,6 +318,20 @@
 
 .input{
   max-width: 12rem;
+}
+
+.aligned {
+  width: 18rem;
+  height: 14rem;
+  margin-left: 0;
+  margin-right: 1rem;
+  bottom: 65vh;
+  left: 25%;
+}
+
+.edit-note-btn{
+  left: 12rem;
+  bottom: 1rem;
 }
 
 }
