@@ -36,31 +36,31 @@ const Signup = () => {
     <section >
       <Header/>
       <hr/>
-      <form class="page-wrapper flex-page"   onSubmit={e => {
+      <form className="page-wrapper login-form flex-page"   onSubmit={e => {
           e.preventDefault();
           signupSubmitHandler(user);
         }}>
-        <h1 class="page-heading centered">Signup</h1>
+        <h1 className="page-heading centered">Signup</h1>
 
 
-        <div class="input-labels">First name</div>
-        <input class="input-field"  value={user.firstName}
+        <div className="input-labels">First name</div>
+        <input className="input-field"  value={user.firstName}
             onChange={e => setUser({ ...user, firstName : e.target.value })} required />
 
-        <div class="input-labels">Last name</div>
-        <input class="input-field"  value={user.lastName}
+        <div className="input-labels">Last name</div>
+        <input className="input-field"  value={user.lastName}
             onChange={e => setUser({ ...user, lastName : e.target.value })} required />
             
         
-        <div class="input-labels">Email Address</div>
-        <input class="input-field" type="email" placeholder="example@gmail.com" value={user.email}
+        <div className="input-labels">Email Address</div>
+        <input className="input-field" type="email" placeholder="example@gmail.com" value={user.email}
             onChange={e => setUser({ ...user, email: e.target.value })} required />
   
-        <div class="input-labels">Password</div>
-        <input class="input-field" type="password" placeholder="***********"  value={user.password}
+        <div className="input-labels">Password</div>
+        <input className="input-field" type="password" placeholder="***********"  value={user.password}
               onChange={e => setUser({ ...user, password: e.target.value })} required />
   
-        <button class="login-button" type = "submit">Signup</button>
+        <button className="login-button" type = "submit">Signup</button>
         <Link to = "/login" className="create-account-link">Already a user?  </Link>
 
     </form>

@@ -35,7 +35,7 @@ const InputCard = () => {
     return(
         <form onSubmit={e => {
           e.preventDefault()
-          addNote()
+          {status ? addNote() : navigate("/login")}
         }} className="input-note-card mt1 mb1" style = {{backgroundColor : notesData.color}}>
         <div className="flex"> 
           <input required className={isDarkMode ? "ml1 mt1 font-medium input dark-mode" :"ml1 mt1 font-medium input"} placeholder="Title" value = {notesData.title}  onChange = {(e) => setNotesData({...notesData , title : e.target.value, order : noteState.notes.length})} />

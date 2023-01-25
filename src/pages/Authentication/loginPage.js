@@ -36,9 +36,9 @@ const Signin = () => {
     <section >
       <Header/>
       <hr/>
-      <div className="flex-r">
+      <div className="flex-page ">
       <Sidebar/>
-      <form className="page-wrapper flex-page" onSubmit={e => {
+      <form className="page-wrapper login-form flex-page" onSubmit={e => {
           e.preventDefault();
           signinSubmitHandler(user);
         }}>

@@ -94,3 +94,7 @@
     color: var(--primary-color);
     text-align: center;
   }
+
+  .login-form{
+    margin: 1rem auto;
+  }
